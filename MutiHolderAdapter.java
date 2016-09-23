@@ -27,11 +27,11 @@ public abstract class MutiHolderAdapter<T> extends RecyclerView.Adapter<ComHolde
         notifyDataSetChanged();
     }
 
-    public abstract int getViewHolderLayoutId(int position);
+    public abstract int getViewHolderLayoutId(int position,List<T> mData);
 
     @Override
     public int getItemViewType(int position) {
-        return getViewHolderLayoutId(position);
+        return getViewHolderLayoutId(position,mData);
     }
 
     @Override
@@ -41,7 +41,7 @@ public abstract class MutiHolderAdapter<T> extends RecyclerView.Adapter<ComHolde
 
     @Override
     public void onBindViewHolder(ComHolder holder, int position) {
-        mLayoutId = getViewHolderLayoutId(position);
+        mLayoutId = getViewHolderLayoutId(position,mData);
         conver(holder,mData.get(position),mLayoutId);
     }
 
